@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ws test</title>
+</head>
+<body>
+  hello ws!
+</body>
+<script src="./bower_components/actioncable-js/dist/cable.js"></script>
+<script>
+  window.cable = cable = Cable.createConsumer('ws://localhost:28080/websocket');
+  var params = {
+    channel: 'TableChannel',
+    table: '56838b17744f6ba4ab000001'
+  }
+  window.handler =  handler = cable.subscriptions.create(params, {
+    updateColumn: function(){
+      this.perform('update_column', {
+        id: "56838b27744f6ba4ab000005",
+        name: "sl1",
+        position: 2,
+        width: 456,
+        type: "date",
+        config: {
+          "a": 1
+        },
+      })
+    },
+    received: function(data) {
+      console.log(data);
+    },
+    speak: function(){
+      this.perform('speak', {'a', 'b', 'c'})
+    }
+  })
+
+</script>
+</html>

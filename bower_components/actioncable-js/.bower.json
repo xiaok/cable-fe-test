@@ -1,0 +1,25 @@
+{
+  "name": "actioncable-js",
+  "authors": [
+    "Christian Wesselhoeft <hi@xtian.us>"
+  ],
+  "description": "JavaScript extracted from the Rails Action Cable repository",
+  "license": "MIT",
+  "main": "dist/cable.js",
+  "ignore": [
+    ".gitmodules",
+    "actioncable",
+    "update"
+  ],
+  "homepage": "https://github.com/xtian/action-cable-js",
+  "_release": "fc5c64d125",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fc5c64d1252b795741b9b9e9767cdfbb833fce7e"
+  },
+  "_source": "git://github.com/xtian/action-cable-js.git",
+  "_target": "*",
+  "_originalSource": "xtian/action-cable-js",
+  "_direct": true
+}
