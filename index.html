@@ -7,15 +7,24 @@
 <body>
   hello ws!
 </body>
+<!-- 引入 actioncable-js -->
 <script src="./bower_components/actioncable-js/dist/cable.js"></script>
 <script>
-  window.cable = cable = Cable.createConsumer('ws://localhost:28080/websocket');
+
+  //连接 ws
+  var cable = Cable.createConsumer('ws://localhost:28080/websocket');
+
+  //参数填写TableChannel 和 table id
   var params = {
     channel: 'TableChannel',
     table: '56838b17744f6ba4ab000001'
   }
-  window.handler =  handler = cable.subscriptions.create(params, {
+
+  //创建链接
+  var channel = cable.subscriptions.create(params, {
+
     updateColumn: function(){
+      // 用 this.perform 发消息
       this.perform('update_column', {
         id: "56838b27744f6ba4ab000005",
         name: "sl1",
@@ -27,11 +36,11 @@
         },
       })
     },
+
+    //用received 接受 channel 接收消息
     received: function(data) {
       console.log(data);
-    },
-    speak: function(){
-      this.perform('speak', {'a', 'b', 'c'})
+      console.log(JSON.stringify(data));
     }
   })
 
